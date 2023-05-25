@@ -1,15 +1,29 @@
 import styles from "./ItemsList.module.css";
+import useShopsStore from "../../store/useShopsStore.js";
 
-export function ItemsList() {
+export function ItemsList({ id }) {
+    const { shops, loading } = useShopsStore((state) => {
+        return {
+            shops: state.shops,
+            loading: state.loading
+        }
+    });
+    const currentShop = shops.filter((obj) => obj["id"] === id);
+
+    const goods = currentShop[0]?.goods.map(({ imgUrl, title, price }, i) => (
+        <li className={styles.item} key={i}>
+            <img className={styles.picture} src={imgUrl} alt="Title"/>
+            <h3 className={styles.title}>{title}</h3>
+            <h4 className={styles.price}>${price}</h4>
+            <button type={"button"}>Add to cart</button>
+        </li>
+    ))
+
+    const renderGoods = loading ? "Loading..." : goods;
+
     return (
         <ul className={styles.itemsList}>
-            {[1,2,3].map(i => (
-                <li className={styles.item} key={i}>
-                    <img className={styles.picture} src="https://e7.pngegg.com/pngimages/455/197/png-clipart-hamburger-veggie-burger-cheeseburger-chicken-sandwich-burger-and-sandwich-miscellaneous-food.png" alt="Title"/>
-                    <h3 className={styles.title}>Title</h3>
-                    <button type={"button"}>Add to cart</button>
-                </li>
-            ))}
+            {renderGoods}
         </ul>
     )
 }

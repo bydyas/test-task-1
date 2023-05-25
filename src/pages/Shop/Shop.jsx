@@ -1,12 +1,15 @@
 import {ShopList} from "../../components/ShopList/ShopList.jsx";
-import styles from "./Shop.module.css";
 import {ItemsList} from "../../components/ItemsList/ItemsList.jsx";
+import styles from "./Shop.module.css";
+import {useState} from "react";
 
 export function Shop() {
+    const [id, setId] = useState(0);
+
     return (
         <div className={styles.shopPage}>
-            <ShopList />
-            <ItemsList />
+            <ShopList setId={(id) => setId(id)}/>
+            <ItemsList id={id}/>
         </div>
     )
 }
