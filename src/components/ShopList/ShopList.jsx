@@ -4,23 +4,30 @@ import styles from "./ShopList.module.css";
 
 
 export function  ShopList() {
-    const shops = useShopsStore((state) => state.shops);
+    const { shops, loading } = useShopsStore((state) => {
+        return {
+            shops: state.shops,
+            loading: state.loading
+        }
+    });
+
+    const shopLinks = shops.map(({shop, id}, i) => (
+        <NavLink
+            key={i}
+            to={"/shop/"+id}
+            className={styles.shopTitle}
+            style={({ isActive }) =>
+                isActive ? { fontWeight: 700, backgroundColor: "var(--main-color)" } : undefined
+            }
+        >
+            {shop}
+        </NavLink>
+    ))
 
     return (
         <aside className={styles.sidebar}>
             <nav className={styles.list}>
-                {shops.map(({shop, id}, i) => (
-                    <NavLink
-                        key={i}
-                        to={"/shop/"+id}
-                        className={styles.shopTitle}
-                        style={({ isActive }) =>
-                            isActive ? { fontWeight: 700, backgroundColor: "var(--main-color)" } : undefined
-                        }
-                    >
-                        {shop}
-                    </NavLink>
-                ))}
+                {loading ? "Loading..." : shopLinks}
             </nav>
         </aside>
     )
