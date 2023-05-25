@@ -9,7 +9,7 @@ export function Navigation() {
                 <NavLink
                     key={i}
                     to={path}
-                    style={({ isActive }) => isActive ? { color: 'tomato' } : { color: 'black' }
+                    style={({ isActive }) => isActive ? { color: "var(--main-color)" } : { color: "var(--text-color)" }
                 }>
                     <span className={styles.title}>{title}</span>
                 </NavLink>

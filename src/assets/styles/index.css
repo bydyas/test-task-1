@@ -1,4 +1,5 @@
 @import "./reset.css";
+@import "./vars.css";
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -9,10 +10,10 @@ a, a:visited {
 }
 
 body {
-    padding: 15px 30px;
+    padding: var(--padY-body) var(--padX-body);
     font-family: Inter, Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
-    color: black;
+    color: var(--text-color);
 }
