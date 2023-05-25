@@ -1,5 +1,6 @@
 import styles from "./ItemsList.module.css";
 import useShopsStore from "../../store/useShopsStore.js";
+import PropTypes from "prop-types";
 
 export function ItemsList({ id }) {
     const { shops, loading } = useShopsStore((state) => {
@@ -26,4 +27,8 @@ export function ItemsList({ id }) {
             {renderGoods}
         </ul>
     )
+}
+
+ItemsList.propTypes = {
+    id: PropTypes.number
 }

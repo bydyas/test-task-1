@@ -1,5 +1,6 @@
 import useShopsStore from "../../store/useShopsStore.js";
 import styles from "./ShopList.module.css";
+import PropTypes from "prop-types";
 
 export function  ShopList({ setId }) {
     const shops = useShopsStore((state) => state.shops);
@@ -13,4 +14,8 @@ export function  ShopList({ setId }) {
             </ul>
         </aside>
     )
+}
+
+ShopList.propTypes = {
+    setId: PropTypes.func
 }
