@@ -3,6 +3,8 @@
     --padX-body: 30px;
     --padY-body: 15px;
     --main-color: tomato;
-    --text-color: black;
+    --text-color: #171513;
     --border-r: 8px;
+    --layout-color: #d9b99b;
+    --sec-color: #eed9c4;
 }

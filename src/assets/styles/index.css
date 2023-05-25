@@ -10,6 +10,7 @@ a, a:visited {
 }
 
 body {
+    background-color: beige;
     min-height: 600px;
     min-width: 850px;
     padding: var(--padY-body) var(--padX-body);

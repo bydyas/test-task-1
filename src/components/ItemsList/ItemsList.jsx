@@ -21,12 +21,12 @@ export function ItemsList() {
     ))
 
     const renderGoods = loading ? "Loading..." : goods;
-    const askForSelection = !error ? "Select shop" : null;
+    const askForSelection = error || "Select shop";
 
     return (
         <ul className={styles.itemsList}>
             {error && "Failed to fetch. Try again"}
-            {(!loading && !currentShop.length && id) && "Select existing shop"}
+            {(!loading && !error && !currentShop.length && id) && "Select existing shop"}
             {id ? renderGoods : askForSelection}
         </ul>
     )
