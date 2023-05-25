@@ -1,5 +1,6 @@
 import {useParams} from "react-router-dom";
 import useShopsStore from "../../store/useShopsStore.js";
+import {Spinner} from "../Spinner/Spinner.jsx";
 import styles from "./ItemsList.module.css";
 
 export function ItemsList() {
@@ -20,7 +21,7 @@ export function ItemsList() {
         </li>
     ))
 
-    const renderGoods = loading ? "Loading..." : goods;
+    const renderGoods = loading ? <Spinner /> : goods;
     const askForSelection = error || "Select shop";
 
     return (

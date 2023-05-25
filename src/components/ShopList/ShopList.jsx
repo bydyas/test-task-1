@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import useShopsStore from "../../store/useShopsStore.js";
+import {Spinner} from "../Spinner/Spinner.jsx";
 import styles from "./ShopList.module.css";
 
 
@@ -27,7 +28,7 @@ export function  ShopList() {
         <aside className={styles.sidebar}>
             <nav className={styles.list}>
                 {error && "Failed to fetch. Try again"}
-                {(loading) ? "Loading..." : shopLinks}
+                {(loading) ? <Spinner /> : shopLinks}
             </nav>
         </aside>
     )
