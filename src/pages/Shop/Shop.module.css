@@ -1,4 +1,6 @@
 .shopPage {
     height: 100%;
     display: flex;
+    gap: 30px;
+    justify-content: space-between;
 }

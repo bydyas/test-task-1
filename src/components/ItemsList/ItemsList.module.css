@@ -1,0 +1,26 @@
+.itemsList {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: var(--border-r);
+    padding: 15px 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1 1 33.333%;
+    height: 100px;
+    text-align: center;
+}
+
+.picture {
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
