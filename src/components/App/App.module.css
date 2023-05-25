@@ -5,5 +5,5 @@
 }
 
 .main {
-    min-height: calc(100vh - var(--padY-body)*2 - var(--height-header));
+    height: calc(100vh - var(--padY-body)*2 - var(--height-header));
 }

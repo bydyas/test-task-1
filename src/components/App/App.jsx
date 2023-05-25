@@ -13,7 +13,7 @@ function App() {
 
   return (
    <>
-       <header>
+       <header className={styles.header}>
            <Navigation />
        </header>
        <main className={styles.main}>
