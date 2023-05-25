@@ -1,0 +1,18 @@
+@import "./reset.css";
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+body {
+    padding: 15px 30px;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: black;
+}
