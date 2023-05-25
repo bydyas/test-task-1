@@ -4,12 +4,11 @@ import styles from "./ShopList.module.css";
 
 
 export function  ShopList() {
-    const { shops, loading } = useShopsStore((state) => {
-        return {
-            shops: state.shops,
-            loading: state.loading
-        }
-    });
+    const { shops, loading, error } = useShopsStore((state) => ({
+        shops: state.shops,
+        loading: state.loading,
+        error: state.error
+    }));
 
     const shopLinks = shops.map(({shop, id}, i) => (
         <NavLink
@@ -27,7 +26,8 @@ export function  ShopList() {
     return (
         <aside className={styles.sidebar}>
             <nav className={styles.list}>
-                {loading ? "Loading..." : shopLinks}
+                {error && "Failed to fetch. Try again"}
+                {(loading) ? "Loading..." : shopLinks}
             </nav>
         </aside>
     )

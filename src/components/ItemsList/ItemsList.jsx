@@ -4,12 +4,11 @@ import styles from "./ItemsList.module.css";
 
 export function ItemsList() {
     const { id } = useParams();
-    const { shops, loading } = useShopsStore((state) => {
-        return {
-            shops: state.shops,
-            loading: state.loading
-        }
-    });
+    const { shops, loading, error } = useShopsStore((state) => ({
+        shops: state.shops,
+        loading: state.loading,
+        error: state.error
+    }));
     const currentShop = shops.filter((obj) => obj["id"] === +id);
 
     const goods = currentShop[0]?.goods.map(({ imgUrl, title, price }, i) => (
@@ -22,11 +21,13 @@ export function ItemsList() {
     ))
 
     const renderGoods = loading ? "Loading..." : goods;
+    const askForSelection = !error ? "Select shop" : null;
 
     return (
         <ul className={styles.itemsList}>
-            {(!loading && !currentShop.length && id) ? "Select existing shop" : null}
-            {id ? renderGoods : "Select shop"}
+            {error && "Failed to fetch. Try again"}
+            {(!loading && !currentShop.length && id) && "Select existing shop"}
+            {id ? renderGoods : askForSelection}
         </ul>
     )
 }

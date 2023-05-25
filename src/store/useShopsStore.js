@@ -8,7 +8,7 @@ const useShopsStore = createStore(
         error: false,
         shops: initialShops,
         fetch: async () => {
-            set({ loading: true });
+            set({ loading: true, error: false });
             try {
                 const response = await fetch(import.meta.env.VITE_URL_BASE+"/shops");
 
@@ -18,7 +18,8 @@ const useShopsStore = createStore(
 
                 set({ shops:  await response.json(), loading: false });
             } catch (e) {
-                set({ error: e, loading: false })
+                console.error(e);
+                set({ error: true, loading: false })
             }
         }
     }),
