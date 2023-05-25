@@ -26,8 +26,3 @@
 .shopTitle:hover {
     background-color: var(--main-color);
 }
-
-.shopTitle:active {
-    font-weight: 700;
-    background-color: var(--main-color);
-}

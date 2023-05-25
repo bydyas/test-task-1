@@ -1,21 +1,27 @@
+import {NavLink} from "react-router-dom";
 import useShopsStore from "../../store/useShopsStore.js";
 import styles from "./ShopList.module.css";
-import PropTypes from "prop-types";
 
-export function  ShopList({ setId }) {
+
+export function  ShopList() {
     const shops = useShopsStore((state) => state.shops);
 
     return (
         <aside className={styles.sidebar}>
-            <ul className={styles.list}>
+            <nav className={styles.list}>
                 {shops.map(({shop, id}, i) => (
-                    <li key={i} className={styles.shopTitle} onClick={() => setId(id)}>{shop}</li>
+                    <NavLink
+                        key={i}
+                        to={"/shop/"+id}
+                        className={styles.shopTitle}
+                        style={({ isActive }) =>
+                            isActive ? { fontWeight: 700, backgroundColor: "var(--main-color)" } : undefined
+                        }
+                    >
+                        {shop}
+                    </NavLink>
                 ))}
-            </ul>
+            </nav>
         </aside>
     )
-}
-
-ShopList.propTypes = {
-    setId: PropTypes.func
 }

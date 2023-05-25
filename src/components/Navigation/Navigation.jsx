@@ -1,6 +1,20 @@
 import {NavLink} from "react-router-dom";
-import {routes} from "../../utils/routes.js";
+import {CART_PATH, SHOP_PATH} from "../../utils/consts.js";
+import {Cart, Shop} from "../../pages/index.js";
 import styles from "./Navigation.module.css";
+
+const routes = [
+    {
+        title: "Shop",
+        path: SHOP_PATH,
+        Element: Shop,
+    },
+    {
+        title: "Shopping Cart",
+        path: CART_PATH,
+        Element: Cart
+    }
+]
 
 export function Navigation() {
     return (

@@ -1,15 +1,16 @@
-import styles from "./ItemsList.module.css";
+import {useParams} from "react-router-dom";
 import useShopsStore from "../../store/useShopsStore.js";
-import PropTypes from "prop-types";
+import styles from "./ItemsList.module.css";
 
-export function ItemsList({ id }) {
+export function ItemsList() {
+    const { id } = useParams();
     const { shops, loading } = useShopsStore((state) => {
         return {
             shops: state.shops,
             loading: state.loading
         }
     });
-    const currentShop = shops.filter((obj) => obj["id"] === id);
+    const currentShop = shops.filter((obj) => obj["id"] === +id);
 
     const goods = currentShop[0]?.goods.map(({ imgUrl, title, price }, i) => (
         <li className={styles.item} key={i}>
@@ -24,11 +25,8 @@ export function ItemsList({ id }) {
 
     return (
         <ul className={styles.itemsList}>
-            {renderGoods}
+            {(!currentShop.length && id) ? "Select existing shop" : null}
+            {id ? renderGoods : "Select shop"}
         </ul>
     )
-}
-
-ItemsList.propTypes = {
-    id: PropTypes.number
 }
