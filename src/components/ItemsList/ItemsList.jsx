@@ -25,7 +25,7 @@ export function ItemsList() {
 
     return (
         <ul className={styles.itemsList}>
-            {(!currentShop.length && id) ? "Select existing shop" : null}
+            {(!loading && !currentShop.length && id) ? "Select existing shop" : null}
             {id ? renderGoods : "Select shop"}
         </ul>
     )

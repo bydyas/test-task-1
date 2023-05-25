@@ -10,6 +10,8 @@ a, a:visited {
 }
 
 body {
+    min-height: 600px;
+    min-width: 850px;
     padding: var(--padY-body) var(--padX-body);
     font-family: Inter, Helvetica, Arial, sans-serif;
     font-size: 16px;
