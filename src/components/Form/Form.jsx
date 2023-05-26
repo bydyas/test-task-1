@@ -1,44 +1,36 @@
-import {useState} from "react";
 import PropTypes from "prop-types";
 import styles from "./Form.module.css";
 
-const initUserData = {
-    name: "",
-    email: "",
-    phone: "",
-    address: ""
-}
+export function Form({userData, setUserData}) {
 
-export function Form({onSubmit}) {
-    const [userData, setUserData] = useState(initUserData);
-
-    const handleInput = (event) => {
+    const handleInputChange = (event) => {
         const target = event.target;
         setUserData({...userData, [target.name]: target.value});
     }
 
     return (
-        <form className={styles.form} onSubmit={onSubmit}>
+        <form className={styles.form}>
             <label>
                 <h4>Name:</h4>
-                <input onChange={handleInput} className={styles.input} type={"text"} name={"name"} value={userData.name}/>
+                <input onChange={handleInputChange} className={styles.input} type={"text"} name={"name"} value={userData.name}/>
             </label>
             <label>
                 <h4>Email:</h4>
-                <input onChange={handleInput} className={styles.input} type={"email"} name={"email"} value={userData.email}/>
+                <input onChange={handleInputChange} className={styles.input} type={"email"} name={"email"} value={userData.email}/>
             </label>
             <label>
                 <h4>Phone:</h4>
-                <input onChange={handleInput} className={styles.input} type={"tel"} name={"phone"} value={userData.phone}/>
+                <input onChange={handleInputChange} className={styles.input} type={"tel"} name={"phone"} value={userData.phone}/>
             </label>
             <label>
                 <h4>Address:</h4>
-                <input onChange={handleInput} className={styles.input} type={"text"} name={"address"} value={userData.address}/>
+                <input onChange={handleInputChange} className={styles.input} type={"text"} name={"address"} value={userData.address}/>
             </label>
         </form>
     )
 }
 
 Form.propTypes = {
-    onSubmit: PropTypes.func
+    userData: PropTypes.object,
+    setUserData: PropTypes.func
 }

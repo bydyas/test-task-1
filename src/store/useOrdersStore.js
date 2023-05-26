@@ -1,10 +1,10 @@
 import { createStore } from "../utils/createStore";
 
-const initialOrders= [];
-
 const useOrdersStore = createStore(
     (set, get) => ({
-        orders: initialOrders,
+        loading: false,
+        error: false,
+        orders: [],
         addOrder: (newOrder) => set((state) => ({ orders: [...state.orders, newOrder] })),
         removeOrder: (title) => set((state) => ({ orders: state.orders.filter(order => order.title !== title) })),
         editOrder: (title, key, value) => {
@@ -16,6 +16,28 @@ const useOrdersStore = createStore(
             };
             get().addOrder(editedOrder);
         },
+        postOrder: async (order) => {
+            set({ loading: true, error: false });
+            try {
+                const response = await fetch(import.meta.env.VITE_URL_BASE+"/orders", {
+                    method: "POST",
+                    body: JSON.stringify(order) ,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Could not post, status: ${response.status}`);
+                }
+
+                console.log(await response.json());
+                get().reset();
+                set({ loading: false });
+            } catch (e) {
+                console.error(e);
+                set({ error: true, loading: false })
+            }
+        },
+        reset: () => set({loading: false, error: false, orders: []})
     }),
     'ORDERS',
 );
