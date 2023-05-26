@@ -1,3 +1,10 @@
 .cartPage {
+    height: 100%;
+}
 
+.container {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    height: calc(100% - var(--height-header));
 }
