@@ -10,7 +10,7 @@ const useShopsStore = createStore(
         fetch: async () => {
             set({ loading: true, error: false });
             try {
-                const response = await fetch(import.meta.env.VITE_URL_BASE+"/shops");
+                const response = await fetch("https://64639233043c103502a665a5.mockapi.io/api/shops");
 
                 if (!response.ok) {
                     throw new Error(`Could not fetch, status: ${response.status}`);

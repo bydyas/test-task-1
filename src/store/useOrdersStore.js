@@ -19,7 +19,7 @@ const useOrdersStore = createStore(
         postOrder: async (order) => {
             set({ loading: true, error: false });
             try {
-                const response = await fetch(import.meta.env.VITE_URL_BASE+"/orders", {
+                const response = await fetch("https://64639233043c103502a665a5.mockapi.io/api/orders", {
                     method: "POST",
                     body: JSON.stringify(order) ,
                     headers: { 'Content-Type': 'application/json' }
