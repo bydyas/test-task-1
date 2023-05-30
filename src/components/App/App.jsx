@@ -10,7 +10,10 @@ import styles from "./App.module.css";
 function App() {
     const fetch = useShopsStore((state) => state.fetch);
 
-    useEffect(() => fetch, []);
+    useEffect(() => {
+        console.log("App has been mounted");
+        fetch();
+    }, []);
 
   return (
    <>
