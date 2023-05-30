@@ -1,8 +1,6 @@
 # Delivery App
 
-## Preview
-
-https://test-task-1-7utahkhck-bydyas.vercel.app/shop
+## Preview link in description
 
 ### Shop Page
 ![зображення](https://github.com/bydyas/test-task-1/assets/74198494/b7aa65a4-ee16-4ee2-a2ef-098b926a9da2)
